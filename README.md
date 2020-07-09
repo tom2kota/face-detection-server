@@ -1,4 +1,4 @@
-# Face detection API - Server (Dockerized) with [Client](https://github.com/tom2kota/face-detection-server)
+# Face detection API - Server (Dockerized) with [Client](https://github.com/tom2kota/face-detection-client)
 
 
 ```
