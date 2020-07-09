@@ -19,7 +19,7 @@ const db = knex({
 
 const app = express();
 
-const whitelist = ['http://localhost:3001']
+const whitelist = ['http://localhost:3000']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -42,6 +42,6 @@ app.post('/profile/:id', auth.requireAuth, (req, res) => { profile.handleProfile
 app.put('/image', auth.requireAuth, (req, res) => { image.handleImage(req, res, db)})
 app.post('/imageurl', auth.requireAuth, (req, res) => { image.handleApiCall(req, res)})
 
-app.listen(3000, ()=> {
-  console.log('app is running on port 3000');
+app.listen(3001, ()=> {
+  console.log('........... Face Detection Server App ...........  \n            is running on port: {3001}');
 })

@@ -10,14 +10,14 @@ npm start
 ```
 
 ```
+sudo docker-compose up
 sudo docker-compose up --build
 
-sudo docker-compose up
-
 sudo docker-compose ps
-sudo docker stop
-
 sudo docker-compose down
+
+sudo docker ps
+sudo docker stop
 ```
 
  --------------------
