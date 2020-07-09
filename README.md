@@ -91,7 +91,6 @@ backend               |             is running on port: {3001}
 
 ```
 curl -X POST 'http://localhost:3001/register' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"email":"user1.email@signup.com","password":"1234","name":"User"}'
-
 ```
 
 ```
@@ -135,6 +134,14 @@ curl 'http://localhost:3001/imageurl' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; 
 curl 'http://localhost:3001/imageurl' -H 'Content-Type: application/json' -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI0LmVtYWlsQHNpZ251cC5jb20iLCJpYXQiOjE1OTQzMjY4ODQsImV4cCI6MTU5NDQ5OTY4NH0.KCFPmbGqNA1ac2lHJKwz62igZhZwTiEjOEeTuHmgcGA' -d '{"input":"https://static01.nyt.com/images/2019/10/02/video/02-still-for-america-room-loop/02-still-for-america-room-loop-jumbo.jpg"}'
 ```
 
+
+----------
+
+[localhost:3001/profile/1](http://localhost:3001/profile/1)
+
+```
+curl 'http://localhost:3001/profile/1' -H 'Content-Type: application/json' -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI0LmVtYWlsQHNpZ251cC5jb20iLCJpYXQiOjE1OTQzMjc1MzcsImV4cCI6MTU5NDUwMDMzN30.4T_ufvUd5v8dJDdv8hin0fGezy75rrkbc0XuIU8pzAo' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"formInput":{"name":"New Name","age":"11","pet":"cat"}}'
+```
 
 -------------------
 
