@@ -64,47 +64,75 @@ You can grab Clarifai API key [here](https://www.clarifai.com/)
 
 
 -------------
+
 log:
 ```  
-postgres           | Success. You can now start the database server using:
-postgres           |     pg_ctl -D /var/lib/postgresql/data -l logfile start
-postgres           | server started
-backend            | app is running on port 3000
-postgres           | server stopped
-postgres           | 
-postgres           | PostgreSQL init process complete; ready for start up.
-postgres           | 
-postgres           | 2020-07-08 11:17:11.628 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
-postgres           | 2020-07-08 11:17:11.631 UTC [1] LOG:  listening on IPv6 address "::", port 5432
-postgres           | 2020-07-08 11:17:11.827 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
-postgres           | 2020-07-08 11:17:12.121 UTC [74] LOG:  database system was shut down at 2020-07-08 11:17:10 UTC
-postgres           | 2020-07-08 11:17:12.228 UTC [1] LOG:  database system is ready to accept connections
-
+backend               | [nodemon] 2.0.4
+backend               | [nodemon] to restart at any time, enter `rs`
+backend               | [nodemon] watching path(s): *.*
+backend               | [nodemon] watching extensions: js,mjs,json
+backend               | [nodemon] starting `node server.js`
+backend               | ........... Face Detection Server App ...........  
+backend               |             is running on port: {3001}
 
 ```
 
 ---------------
 
 
-## curl
+## endpoints & curl
 
 
-[localhost:3000](http://localhost:3000/)
+[localhost:3001](http://localhost:3001/)
 
 
-[localhost:3000/register](http://localhost:3000/register)
-``` 
-curl -X POST -d '{"email":"user.email@signup.com","password":"111-222"}' http://localhost:3000/register
+[localhost:3001/register](http://localhost:3001/register)
 
-curl 'http://localhost:3000/register' -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"email":"test@test.com","password":"123456","name":"Test"}'
+
+```
+curl -X POST 'http://localhost:3001/register' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"email":"user1.email@signup.com","password":"1234","name":"User"}'
+
+```
+
+```
+curl -X POST 'http://localhost:3001/register' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' -d '{"email":"user2.email@signup.com","password":"1234","name":"User"}'
 ```
 
 
-[localhost:3000/signin](http://localhost:3000/signin)
 ``` 
-curl -X POST -d '{"email":"user.email@signup.com","password":"111-222"}' http://localhost:3000/signin
+curl -X POST 'http://localhost:3001/register' -H 'Accept: */*' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' -d '{"email":"user3.email@signup.com","password":"1234","name":"User"}'
+```
 
-curl 'http://localhost:3000/signin' -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"email":"test@test.com","password":"123456"}'
+
+``` 
+curl -X POST 'http://localhost:3001/register' -H 'Accept: */*' -H 'Content-Type: application/json'  -d '{"email":"user4.email@signup.com","password":"1234","name":"User"}'
+```
+
+
+--------
+
+
+[localhost:3001/signin](http://localhost:3001/signin)
+
+``` 
+curl -X POST 'http://localhost:3001/signin' -H 'Accept: */*' -H 'Content-Type: application/json'  -d '{"email":"user4.email@signup.com","password":"1234"}'
+```
+
+
+```
+curl 'http://localhost:3001/signin' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"email":"user4.email@signup.com","password":"1234"}'
+```
+
+
+---------
+
+[localhost:3001/imageurl](http://localhost:3001/imageurl)
+```
+curl 'http://localhost:3001/imageurl' -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0' -H 'Accept: */*' -H 'Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3' --compressed -H 'Referer: http://localhost:3000/' -H 'Content-Type: application/json' -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI0LmVtYWlsQHNpZ251cC5jb20iLCJpYXQiOjE1OTQzMjY4ODQsImV4cCI6MTU5NDQ5OTY4NH0.KCFPmbGqNA1ac2lHJKwz62igZhZwTiEjOEeTuHmgcGA' -H 'Origin: http://localhost:3000' -H 'Connection: keep-alive' --data-raw '{"input":"https://static01.nyt.com/images/2019/10/02/video/02-still-for-america-room-loop/02-still-for-america-room-loop-jumbo.jpg"}'
+```
+
+```
+curl 'http://localhost:3001/imageurl' -H 'Content-Type: application/json' -H 'Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI0LmVtYWlsQHNpZ251cC5jb20iLCJpYXQiOjE1OTQzMjY4ODQsImV4cCI6MTU5NDQ5OTY4NH0.KCFPmbGqNA1ac2lHJKwz62igZhZwTiEjOEeTuHmgcGA' -d '{"input":"https://static01.nyt.com/images/2019/10/02/video/02-still-for-america-room-loop/02-still-for-america-room-loop-jumbo.jpg"}'
 ```
 
 
